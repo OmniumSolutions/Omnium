@@ -162,7 +162,7 @@ export default function App() {
             </motion.h1>
             
             <motion.p variants={fadeIn} className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-lg">
-              Seja no chão de fábrica de uma metalúrgica, no sistema de segurança automotiva, na automação de processos administrativos na nuvem ou no atendimento de ponta via IA: nossas arquiteturas são desenhadas para durar.
+              Seja no chão de fábrica ou no delivery, na automação de processos industriais ou administrativos, na nuvem ou no atendimento de ponta via IA: nossas arquiteturas são desenhadas para durar.
             </motion.p>
 
             <motion.div variants={fadeIn} className="pt-4 flex flex-col sm:flex-row gap-4">
