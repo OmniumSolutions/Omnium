@@ -44,11 +44,6 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 };
 
 export default function App() {
-  // Calculator States
-  const [employees, setEmployees] = useState(5);
-  const [hoursPerDay, setHoursPerDay] = useState(2);
-  const [hourlyRate, setHourlyRate] = useState(25); 
-  
   // Lead Form States
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -64,11 +59,7 @@ export default function App() {
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // ROI Calculator Calculations
-  const dailySavings = employees * hoursPerDay * hourlyRate;
-  const monthlySavings = dailySavings * 22; // 22 working days
-  const yearlySavings = monthlySavings * 12;
-  const hoursSavedMonthly = employees * hoursPerDay * 22;
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -239,106 +230,9 @@ ${formData.projectDescription}`;
         </div>
       </section>
 
-      <section id="about" className="py-24 px-4 sm:px-8 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8 lg:sticky lg:top-32"
-          >
-            <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-widest rounded-full">
-                <ShieldCheck className="w-3.5 h-3.5" /> Especialistas Certificados
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900 leading-tight">
-                Resolvemos os problemas que sistemas genéricos não dão conta.
-              </h2>
-            </div>
-            <div className="space-y-6 text-slate-600 text-sm sm:text-base leading-relaxed">
-              <p>
-                Diferente de agências que apenas entregam telas bonitas, nosso time de <strong>Engenharia de Software</strong> vai a fundo. Entendemos protocolos industriais (Modbus, MQTT), criamos integrações complexas (APIs legadas) e aplicamos IA de ponta para reduzir seus custos reais.
-              </p>
-              <ul className="space-y-3 font-medium text-slate-800">
-                <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0"/> +50.000 horas manuais salvas para clientes.</li>
-                <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0"/> Código robusto com garantia de estabilidade.</li>
-                <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0"/> Soluções sob medida (Customizadas para o seu negócio).</li>
-              </ul>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="space-y-6 relative z-10">
-              {/* Testimonial 1 - Clínica Odontológica */}
-              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
-                <div className="flex text-amber-400 mb-4 gap-1">
-                  {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
-                </div>
-                <p className="text-slate-700 italic text-sm leading-relaxed mb-6">
-                  "Nossa recepção não dava conta de responder todos os pacientes e fazer os agendamentos, volta e meia os horaios conflitavam. A Omnium implementou uma <strong>IA humanizada no WhatsApp que atende 24h por dia. Ela verifica horários disponíveis, negocia o melhor horário com o paciente e agenda direto na nossa agenda do Google</strong> de forma tão natural que acham que estão falando com nossa recepcionista. Nossa agenda lotou e a equipe parou de apagar incêndios."
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600 text-sm">
-                    DR
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-sm">Dra. Renata M.</h4>
-                    <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mt-0.5">Gestora | Clínica OdontoVip</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Testimonial 2 - Indústria e Visão Computacional */}
-              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
-                <div className="flex text-amber-400 mb-4 gap-1">
-                  {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
-                </div>
-                <p className="text-slate-700 italic text-sm leading-relaxed mb-6">
-                  "Na nossa linha de produção, um operador tinha que ficar verificando visualmente os parafusos de cada peça, o que gerava gargalos e falhas humanas por fadiga. A Omnium instalou um sistema de <strong>Visão Computacional que inspeciona as peças em milissegundos e reprova as defeituosas automaticamente.</strong> A velocidade e precisão da linha triplicaram."
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500 text-sm">
-                    FS
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-sm">Fernando Silva</h4>
-                    <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mt-0.5">Diretor de Qualidade | MetalTech</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Testimonial 3 - Delivery Automatizado */}
-              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
-                <div className="flex text-amber-400 mb-4 gap-1">
-                  {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
-                </div>
-                <p className="text-slate-700 italic text-sm leading-relaxed mb-6">
-                  "O caos do delivery acabou. A IA humanizada atende no WhatsApp, e quando o PIX cai, <strong>o pedido vai pra cozinha e a comanda imprime sozinha</strong>. Ao bater na botoeira, o cliente é avisado no whatsapp que o pedido saiu. Na entrega, o motoboy digita o código do cliente e o sistema faz o PIX da taxa de entrega pra ele na hora!"
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center font-bold text-orange-600 text-sm">
-                    MC
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-sm">Marcos Costa</h4>
-                    <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mt-0.5">Proprietário | Burger Express</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm h-full bg-blue-400/10 blur-3xl rounded-full pointer-events-none"></div>
-          </motion.div>
-        </div>
-      </section>
-      <section id="services" className="py-24 px-4 sm:px-8 max-w-7xl mx-auto w-full space-y-16 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-r from-blue-100/50 to-cyan-100/50 blur-[100px] pointer-events-none rounded-full"></div>
+      <section id="services" className="py-24 px-4 sm:px-8 bg-slate-900 w-full relative">
+        <div className="max-w-7xl mx-auto w-full space-y-16 relative z-10">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-r from-blue-600/20 to-cyan-600/20 blur-[100px] pointer-events-none rounded-full"></div>
         
         <motion.div 
           initial="initial"
@@ -347,10 +241,10 @@ ${formData.projectDescription}`;
           className="text-center max-w-3xl mx-auto space-y-4 relative z-10"
         >
           <span className="text-blue-600 font-mono text-[10px] font-bold uppercase tracking-[0.2em] block">ATENDIMENTO DE PONTA</span>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900">
+          <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-white">
             Escale seu Atendimento com IA Humanizada
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base">
+          <p className="text-slate-400 text-sm sm:text-base">
             Reduza custos, automatize processos repetitivos e aumente suas vendas utilizando agentes de inteligência artificial multimodais que compreendem perfeitamente texto, áudio e imagem. Construímos arquiteturas blindadas contra falhas para a sua empresa.
           </p>
         
@@ -365,21 +259,21 @@ ${formData.projectDescription}`;
         >
           
           {/* Card 1: IA de Atendimento */}
-          <motion.div variants={fadeIn} className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5 transition-all group duration-300 hover:-translate-y-1">
+          <motion.div variants={fadeIn} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5 transition-all group duration-300 hover:-translate-y-1">
             <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
                 <MessageSquare className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold tracking-tight text-slate-900">IA de Atendimento Humanizado</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h3 className="text-lg font-bold tracking-tight text-white">IA de Atendimento Humanizado</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Chega de menus numéricos travados ("digite 1 para financeiro"). Criamos soluções inteligentes de inteligência artificial natural para WhatsApp e web. Integra suporte a mensagens de áudio, transcrição instantânea de voz e análise inteligente de anexos e imagens.
               </p>
             </div>
-            <div className="pt-6 mt-6 flex justify-between items-center border-t border-slate-100">
+            <div className="pt-6 mt-6 flex justify-between items-center border-t border-slate-700/50">
               <span className="text-[10px] font-mono font-bold text-blue-400 uppercase tracking-widest">Generative AI</span>
               <button 
                 onClick={() => selectService("ia-atendimento")}
-                className="text-xs font-bold text-slate-500 group-hover:text-blue-600 flex items-center gap-1 transition-colors"
+                className="text-xs font-bold text-slate-400 group-hover:text-blue-600 flex items-center gap-1 transition-colors"
               >
                 Saber mais <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
@@ -388,21 +282,21 @@ ${formData.projectDescription}`;
 </motion.div>
 
           {/* Card 2: Automação Inteligente (RPA & Scripts) */}
-          <motion.div variants={fadeIn} className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-900/5 transition-all group duration-300 hover:-translate-y-1">
+          <motion.div variants={fadeIn} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-900/5 transition-all group duration-300 hover:-translate-y-1">
             <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
                 <Settings className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold tracking-tight text-slate-900">Automação Inteligente (RPA)</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h3 className="text-lg font-bold tracking-tight text-white">Automação Inteligente (RPA)</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Substitua a digitação e conferência manual de planilhas. Desenvolvemos robôs autônomos para extração de dados em massa da web (Web Scraping), preenchimento automático de formulários e conciliações de sistemas legados.
               </p>
             </div>
-            <div className="pt-6 mt-6 flex justify-between items-center border-t border-slate-100">
+            <div className="pt-6 mt-6 flex justify-between items-center border-t border-slate-700/50">
               <span className="text-[10px] font-mono font-bold text-indigo-400 uppercase tracking-widest">RPA & SCRIPTS</span>
               <button 
                 onClick={() => selectService("rpa")}
-                className="text-xs font-bold text-slate-500 group-hover:text-indigo-600 flex items-center gap-1 transition-colors"
+                className="text-xs font-bold text-slate-400 group-hover:text-indigo-600 flex items-center gap-1 transition-colors"
               >
                 Saber mais <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
@@ -411,21 +305,21 @@ ${formData.projectDescription}`;
 </motion.div>
 
           {/* Card 3: Integração de Sistemas */}
-          <motion.div variants={fadeIn} className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-cyan-200 hover:shadow-xl hover:shadow-cyan-900/5 transition-all group duration-300 hover:-translate-y-1">
+          <motion.div variants={fadeIn} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-cyan-200 hover:shadow-xl hover:shadow-cyan-900/5 transition-all group duration-300 hover:-translate-y-1">
             <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition-colors duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition-colors duration-300">
                 <Network className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold tracking-tight text-slate-900">Integração de Sistemas</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h3 className="text-lg font-bold tracking-tight text-white">Integração de Sistemas</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Conecte seu CRM, ferramentas internas, e-commerces e bancos de dados legados. Desenvolvemos APIs seguras (REST, SOAP) e gatilhos de Webhooks robustos que sincronizam seus dados em tempo real sem travamentos.
               </p>
             </div>
-            <div className="pt-6 mt-6 flex justify-between items-center border-t border-slate-100">
+            <div className="pt-6 mt-6 flex justify-between items-center border-t border-slate-700/50">
               <span className="text-[10px] font-mono font-bold text-cyan-400 uppercase tracking-widest">APIs & WEBHOOKS</span>
               <button 
                 onClick={() => selectService("integracao")}
-                className="text-xs font-bold text-slate-500 group-hover:text-cyan-600 flex items-center gap-1 transition-colors"
+                className="text-xs font-bold text-slate-400 group-hover:text-cyan-600 flex items-center gap-1 transition-colors"
               >
                 Saber mais <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
@@ -434,21 +328,21 @@ ${formData.projectDescription}`;
 </motion.div>
 
           {/* Card 4: Automação Industrial, Automotiva & Residencial */}
-          <motion.div variants={fadeIn} className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-900/5 transition-all group duration-300 hover:-translate-y-1">
+          <motion.div variants={fadeIn} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-900/5 transition-all group duration-300 hover:-translate-y-1">
             <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
                 <Cpu className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold tracking-tight text-slate-900">Automação de Hardware & IoT</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h3 className="text-lg font-bold tracking-tight text-white">Automação de Hardware & IoT</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Programação de embarcados e CLPs no chão de fábrica. Sincronização de sensores de telemetria industrial ou residencial via protocolos consagrados como Modbus e MQTT diretamente para a nuvem.
               </p>
             </div>
-            <div className="pt-6 mt-6 flex justify-between items-center border-t border-slate-100">
+            <div className="pt-6 mt-6 flex justify-between items-center border-t border-slate-700/50">
               <span className="text-[10px] font-mono font-bold text-emerald-400 uppercase tracking-widest">IoT & HARDWARE</span>
               <button 
                 onClick={() => selectService("iot")}
-                className="text-xs font-bold text-slate-500 group-hover:text-emerald-600 flex items-center gap-1 transition-colors"
+                className="text-xs font-bold text-slate-400 group-hover:text-emerald-600 flex items-center gap-1 transition-colors"
               >
                 Saber mais <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
@@ -457,21 +351,21 @@ ${formData.projectDescription}`;
 </motion.div>
 
           {/* Card 5: Visão Computacional */}
-          <motion.div variants={fadeIn} className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-purple-200 hover:shadow-xl hover:shadow-purple-900/5 transition-all group duration-300 hover:-translate-y-1">
+          <motion.div variants={fadeIn} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-purple-200 hover:shadow-xl hover:shadow-purple-900/5 transition-all group duration-300 hover:-translate-y-1">
             <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-colors duration-300">
                 <Eye className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold tracking-tight text-slate-900">Visão Computacional & IA</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h3 className="text-lg font-bold tracking-tight text-white">Visão Computacional & IA</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Processamento visual automatizado com OpenCV ou TensorFlow. Desenvolvemos sistemas inteligentes de monitoramento por imagem para detectar falhas físicas, triagem de controle de qualidade ou leitura ótica (OCR) de painéis físicos.
               </p>
             </div>
-            <div className="pt-6 mt-6 flex justify-between items-center border-t border-slate-100">
+            <div className="pt-6 mt-6 flex justify-between items-center border-t border-slate-700/50">
               <span className="text-[10px] font-mono font-bold text-purple-400 uppercase tracking-widest">COMPUTER VISION</span>
               <button 
                 onClick={() => selectService("visao")}
-                className="text-xs font-bold text-slate-500 group-hover:text-purple-600 flex items-center gap-1 transition-colors"
+                className="text-xs font-bold text-slate-400 group-hover:text-purple-600 flex items-center gap-1 transition-colors"
               >
                 Saber mais <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
@@ -505,8 +399,107 @@ ${formData.projectDescription}`;
 
         
 </motion.div>
+              </div>
       </section>
       {/* Process / How it Works Section */}
+      <section id="about" className="py-24 px-4 sm:px-8 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8 lg:sticky lg:top-32"
+          >
+            <div className="space-y-4">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-widest rounded-full">
+                <ShieldCheck className="w-3.5 h-3.5" /> Especialistas Certificados
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900 leading-tight">
+                Resolvemos os problemas que sistemas genéricos não dão conta.
+              </h2>
+            </div>
+            <div className="space-y-6 text-slate-600 text-sm sm:text-base leading-relaxed">
+              <p>
+                Diferente de agências que apenas entregam telas bonitas, nosso time de <strong>Engenharia de Software</strong> vai a fundo. Entendemos protocolos industriais (Modbus, MQTT), criamos integrações complexas (APIs legadas) e aplicamos IA de ponta para reduzir seus custos reais.
+              </p>
+              <ul className="space-y-3 font-medium text-slate-800">
+                <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0"/> +9.000 horas manuais salvas para clientes.</li>
+                <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0"/> Código robusto com garantia de estabilidade.</li>
+                <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0"/> Soluções sob medida (Customizadas para o seu negócio).</li>
+              </ul>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            <div className="space-y-6 relative z-10">
+              {/* Testimonial 1 - Clínica Odontológica */}
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
+                <div className="flex text-amber-400 mb-4 gap-1">
+                  {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+                </div>
+                <p className="text-slate-700 italic text-sm leading-relaxed mb-6">
+                  "Nossa recepção não dava conta de responder todos os pacientes e fazer os agendamentos, volta e meia os horaios conflitavam. A Omnium implementou uma <strong>IA humanizada no WhatsApp que atende 24h por dia.</strong> Ela verifica horários disponíveis, negocia o melhor horário com o paciente e agenda direto na nossa agenda do Google de forma tão natural que acham que estão falando com nossa recepcionista. Nossa agenda lotou e a equipe parou de apagar incêndios."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600 text-sm">
+                    DR
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-sm">Dra. Renata M.</h4>
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mt-0.5">Gestora | Clínica OdontoVip</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Testimonial 2 - Indústria e Visão Computacional */}
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
+                <div className="flex text-amber-400 mb-4 gap-1">
+                  {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+                </div>
+                <p className="text-slate-700 italic text-sm leading-relaxed mb-6">
+                  "Na nossa linha de produção, um operador tinha que ficar verificando visualmente os parafusos de cada peça, o que gerava gargalos e falhas humanas por fadiga. A Omnium desenvolveu um sistema de <strong>Visão Computacional que inspeciona as peças em milissegundos e reprova as defeituosas automaticamente.</strong> A velocidade e precisão da linha triplicaram."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500 text-sm">
+                    FS
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-sm">Fernando Silva</h4>
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mt-0.5">Diretor de Qualidade | MetalTech</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Testimonial 3 - Delivery Automatizado */}
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
+                <div className="flex text-amber-400 mb-4 gap-1">
+                  {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+                </div>
+                <p className="text-slate-700 italic text-sm leading-relaxed mb-6">
+                  "O caos do delivery acabou. A IA humanizada atende no WhatsApp, e quando o PIX cai, <strong>o pedido vai pra cozinha e a comanda imprime sozinha</strong>. Ao bater na botoeira que fica cozinha (que eles desenvolveram tbm), o cliente é avisado no whatsapp que o pedido saiu. Na entrega, o motoboy digita o código do cliente e o sistema faz o PIX da taxa de entrega pra ele na hora!"
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center font-bold text-orange-600 text-sm">
+                    MC
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-sm">Marcos Costa</h4>
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mt-0.5">Proprietário | Burger Express</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm h-full bg-blue-400/10 blur-3xl rounded-full pointer-events-none"></div>
+          </motion.div>
+        </div>
+      </section>
       <section id="process" className="py-24 px-4 sm:px-8 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
@@ -516,7 +509,7 @@ ${formData.projectDescription}`;
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 relative">
             <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-blue-100 via-blue-500 to-emerald-100 z-0"></div>
             
             {[
@@ -525,145 +518,20 @@ ${formData.projectDescription}`;
               { step: "03", title: "Desenvolvimento", desc: "Criamos a automação ou IA com código robusto e limpo.", icon: <Code className="w-6 h-6"/> },
               { step: "04", title: "Deploy & Setup", desc: "Implementamos no seu ambiente e treinamos sua equipe.", icon: <Rocket className="w-6 h-6"/> }
             ].map((s, i) => (
-              <div key={i} className="relative z-10 flex flex-col items-center text-center space-y-4 group">
-                <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-blue-600 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+              <div key={i} className="relative z-10 flex flex-row md:flex-col items-start md:items-center text-left md:text-center gap-4 md:gap-0 md:space-y-4 group">
+                <div className="w-16 h-16 shrink-0 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-blue-600 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                   {s.icon}
                 </div>
                 <div>
                   <span className="text-[10px] font-mono font-bold text-blue-500 mb-1 block">PASSO {s.step}</span>
                   <h3 className="font-bold text-slate-900 text-lg">{s.title}</h3>
-                  <p className="text-xs text-slate-600 mt-2">{s.desc}</p>
+                  <p className="text-xs text-slate-600 mt-1 md:mt-2">{s.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-{/* Interactive Tool: Cost & Time Savings Calculator */}
-      <section id="roi-calculator" className="bg-slate-50 py-24 px-4 sm:px-8 border-t border-b border-slate-200 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5 space-y-8"
-          >
-            <div className="space-y-4">
-              <span className="text-blue-600 font-mono text-[10px] font-bold uppercase tracking-[0.2em] block">RETORNO SOBRE O INVESTIMENTO</span>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900 leading-tight">
-                Calcule quanto dinheiro sua empresa perde por não automatizar
-              </h2>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Tarefas repetitivas drenam o foco de colaboradores qualificados. Ajuste as barras ao lado com as métricas do seu cenário atual e veja a economia que a Omnium Solutions pode gerar integrando robôs inteligentes e scripts de RPA.
-              </p>
-            </div>
-            
-            <div className="p-5 bg-white border border-slate-200 rounded-2xl space-y-3 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 text-blue-600">
-                <ShieldCheck className="w-5 h-5 shrink-0" />
-                <span className="text-xs font-bold uppercase tracking-widest font-mono text-slate-800">Tratamento Cirúrgico de Exceções</span>
-              </div>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Nossas automações não param de rodar na primeira mudança de layout de uma página web ou instabilidade de rede. Integramos rotinas robustas de log, e-mail de aviso em tempo real e re-tentativa transparente.
-              </p>
-            </div>
-          
-</motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-7 bg-white border border-slate-200 shadow-xl shadow-slate-200/50 rounded-[2rem] p-8 sm:p-12 space-y-10 relative"
-          >
-            <div className="space-y-8 relative z-10">
-              {/* Parameter 1 */}
-              <div className="space-y-4 group">
-                <div className="flex justify-between text-[11px] font-bold uppercase tracking-widest text-slate-500 transition-colors group-hover:text-blue-600">
-                  <span>Colaboradores em processos manuais</span>
-                  <span className="text-blue-600 font-mono text-sm bg-blue-50 px-2 py-1 rounded-md">{employees} pessoas</span>
-                </div>
-                <input 
-                  type="range" 
-                  min="1" 
-                  max="50" 
-                  value={employees} 
-                  onChange={(e) => setEmployees(parseInt(e.target.value))}
-                  className="w-full accent-blue-600 bg-slate-100 h-2 rounded-lg cursor-pointer appearance-none outline-none focus:ring-2 focus:ring-blue-200 transition-all"
-                />
-              </div>
-
-              {/* Parameter 2 */}
-              <div className="space-y-4 group">
-                <div className="flex justify-between text-[11px] font-bold uppercase tracking-widest text-slate-500 transition-colors group-hover:text-blue-600">
-                  <span>Horas desperdiçadas por dia</span>
-                  <span className="text-blue-600 font-mono text-sm bg-blue-50 px-2 py-1 rounded-md">{hoursPerDay} horas/dia</span>
-                </div>
-                <input 
-                  type="range" 
-                  min="1" 
-                  max="8" 
-                  value={hoursPerDay} 
-                  onChange={(e) => setHoursPerDay(parseInt(e.target.value))}
-                  className="w-full accent-blue-600 bg-slate-100 h-2 rounded-lg cursor-pointer appearance-none outline-none focus:ring-2 focus:ring-blue-200 transition-all"
-                />
-              </div>
-
-              {/* Parameter 3 */}
-              <div className="space-y-4 group">
-                <div className="flex justify-between text-[11px] font-bold uppercase tracking-widest text-slate-500 transition-colors group-hover:text-blue-600">
-                  <span>Custo médio por hora (Salário + encargos)</span>
-                  <span className="text-blue-600 font-mono text-sm bg-blue-50 px-2 py-1 rounded-md">R$ {hourlyRate} / hora</span>
-                </div>
-                <input 
-                  type="range" 
-                  min="10" 
-                  max="200" 
-                  value={hourlyRate} 
-                  onChange={(e) => setHourlyRate(parseInt(e.target.value))}
-                  className="w-full accent-blue-600 bg-slate-100 h-2 rounded-lg cursor-pointer appearance-none outline-none focus:ring-2 focus:ring-blue-200 transition-all"
-                />
-              </div>
-            </div>
-
-            {/* Results Board */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-slate-200 rounded-2xl overflow-hidden ring-1 ring-slate-200 relative z-10 shadow-inner">
-              
-              <div className="bg-slate-50/80 backdrop-blur-sm p-6 text-center transition-colors hover:bg-white">
-                <span className="text-[9px] font-mono uppercase tracking-widest text-slate-500 block mb-2">Horas Recuperadas / Mês</span>
-                <span className="text-3xl font-display font-bold text-slate-900 tracking-tight">{hoursSavedMonthly}h</span>
-              </div>
-
-              <div className="bg-slate-50/80 backdrop-blur-sm p-6 text-center transition-colors hover:bg-white">
-                <span className="text-[9px] font-mono uppercase tracking-widest text-slate-500 block mb-2">Economia Mensal</span>
-                <span className="text-3xl font-display font-bold text-blue-600 tracking-tight">R$ {monthlySavings.toLocaleString()}</span>
-              </div>
-
-              <div className="bg-blue-50 p-6 text-center transition-colors hover:bg-blue-100/50">
-                <span className="text-[9px] font-mono uppercase tracking-widest text-blue-600 block mb-2">Retorno Anual Estimado</span>
-                <span className="text-3xl font-display font-bold text-emerald-600 tracking-tight">R$ {yearlySavings.toLocaleString()}</span>
-              </div>
-
-            </div>
-
-            <div className="text-center pt-2 relative z-10">
-              <button 
-                onClick={() => setIsModalOpen(true)}
-                className="w-full sm:w-auto px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:-translate-y-0.5"
-              >
-                Garantir Resultados
-              </button>
-            </div>
-
-          
-</motion.div>
-
-        </div>
-      </section>
-
       {/* Tech Matrix Panel */}
       <section id="tech-matrix" className="py-24 px-4 sm:px-8 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto">
@@ -728,21 +596,7 @@ ${formData.projectDescription}`;
 
           </div>
 
-          <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 mt-4 shadow-sm">
-            <span className="text-[11px] text-slate-600 font-mono text-center sm:text-left leading-relaxed">
-              <span className="text-xl inline-block mr-2 align-middle text-blue-600">🔌</span>
-              Ambientes embarcados? Sim: Arduino, ESP32, Raspberry Pi, CLPs.
-            </span>
-            <a 
-              href="https://www.workana.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-xs font-bold text-slate-700 bg-white hover:text-blue-600 shrink-0 inline-flex items-center gap-1.5 transition-colors border border-slate-200 px-4 py-2 rounded-lg hover:shadow-sm"
-            >
-              Workana Profile
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          </div>
+
         
 </motion.div>
         </div>

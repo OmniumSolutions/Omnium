@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/Omnium/', // <-- A MÁGICA ACONTECE AQUI
+    base: '/Omnium/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
