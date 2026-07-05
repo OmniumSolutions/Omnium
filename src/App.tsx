@@ -188,15 +188,14 @@ ${formData.projectDescription}`;
             <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-700 border border-blue-200/60 text-[10px] font-bold uppercase tracking-widest rounded-full shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
               Automação e Integração de Elite
-            
-</motion.div>
+            </motion.div>
             
             <motion.h1 variants={fadeIn} className="text-4xl sm:text-5xl lg:text-[4.5rem] font-display font-bold leading-[1.05] tracking-tight text-slate-900">
               Pontes de alto desempenho entre o <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Físico e o Digital.</span>
             </motion.h1>
             
-            <motion.p variants={fadeIn} className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-lg">
+            <motion.p variants={fadeIn} className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
               Seja no chão de fábrica de uma metalúrgica, na automação de processos administrativos na nuvem ou no atendimento de ponta via IA: nossas arquiteturas são desenhadas para durar.
             </motion.p>
 
@@ -205,7 +204,7 @@ ${formData.projectDescription}`;
                 onClick={() => setIsModalOpen(true)}
                 className="py-4 px-8 bg-blue-600 text-white font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-blue-700 transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:-translate-y-1 flex items-center justify-center gap-2 group"
               >
-                Agendar Consultoria
+                Falar com Especialista
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
               
@@ -228,44 +227,115 @@ ${formData.projectDescription}`;
         </section>
 
 {/* About Section / Technical Specs Matrix */}
-      <section id="about" className="py-24 px-4 sm:px-8 max-w-7xl mx-auto w-full flex flex-col items-center">
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="lg:col-span-12 max-w-4xl mx-auto text-center space-y-8"
-        >
-          <div className="space-y-4">
-            <span className="text-blue-600 font-mono text-[10px] font-bold uppercase tracking-[0.2em] block">SOBRE A OMNIUM SOLUTIONS</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900 leading-tight">
-              Engenharia de Software e Integração de Sistemas
-            </h2>
-          </div>
-          <div className="space-y-6 text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
-            <p className="font-medium text-slate-700 text-lg">
-              Nosso foco corporativo é projetar e construir arquiteturas de software altamente robustas e blindadas contra falhas operacionais.
-            </p>
-            <p>
-              Diferentes de consultorias puramente digitais, transitamos com extrema naturalidade pela física do chão de fábrica e da automação residencial. Entendemos protocolos industriais (Modbus, MQTT), painéis de CLP e conexões de sensores. Nossa missão é traduzir as necessidades físicas da sua operação em linhas de código eficientes e escaláveis na nuvem.
-            </p>
-          </div>
+      <section className="py-12 border-b border-slate-200 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 text-center space-y-8">
+           <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Especialistas escolhidos por empresas inovadoras</p>
+           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+              <div className="flex items-center gap-2 font-display font-bold text-xl"><Building className="w-6 h-6"/> TechCorp</div>
+              <div className="flex items-center gap-2 font-display font-bold text-xl"><Database className="w-6 h-6"/> DataLogistics</div>
+              <div className="flex items-center gap-2 font-display font-bold text-xl"><Network className="w-6 h-6"/> Industrial Net</div>
+              <div className="flex items-center gap-2 font-display font-bold text-xl"><Rocket className="w-6 h-6"/> Startup Hub</div>
+           </div>
+        </div>
+      </section>
 
-          <div className="border border-slate-200 bg-white rounded-2xl p-6 flex items-center justify-between shadow-sm hover:shadow-md transition-shadow">
-            <div className="space-y-1">
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest block">CONTRATE COM SEGURANÇA</span>
-              <p className="text-sm font-bold text-slate-900">Garantia total de suporte técnico</p>
+      <section id="about" className="py-24 px-4 sm:px-8 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            <div className="space-y-4">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-widest rounded-full">
+                <ShieldCheck className="w-3.5 h-3.5" /> Especialistas Certificados
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900 leading-tight">
+                Resolvemos os problemas que sistemas genéricos não dão conta.
+              </h2>
             </div>
-            <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-6 h-6 text-emerald-600" />
+            <div className="space-y-6 text-slate-600 text-sm sm:text-base leading-relaxed">
+              <p>
+                Diferente de agências que apenas entregam telas bonitas, nosso time de <strong>Engenharia de Software</strong> vai a fundo. Entendemos protocolos industriais (Modbus, MQTT), criamos integrações complexas (APIs legadas) e aplicamos IA de ponta para reduzir seus custos reais.
+              </p>
+              <ul className="space-y-3 font-medium text-slate-800">
+                <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0"/> +50.000 horas manuais salvas para clientes.</li>
+                <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0"/> Código robusto com garantia de estabilidade.</li>
+                <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0"/> Soluções sob medida (Customizadas para o seu negócio).</li>
+              </ul>
             </div>
-          </div>
-        
-</motion.div>
+          </motion.div>
 
-        
-{/* Services Section / Solutions Grid */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            <div className="space-y-6 relative z-10">
+              {/* Testimonial 1 - Clínica Odontológica */}
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
+                <div className="flex text-amber-400 mb-4 gap-1">
+                  {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+                </div>
+                <p className="text-slate-700 italic text-sm leading-relaxed mb-6">
+                  "Nossa recepção não dava conta de responder todos os pacientes e fazer os agendamentos, volta e meia os horaios conflitavam. A Omnium implementou uma <strong>IA humanizada no WhatsApp que atende 24h por dia. Ela verifica horários disponíveis, negocia o melhor horário com o paciente e agenda direto na nossa agenda do Google</strong> de forma tão natural que acham que estão falando com nossa recepcionista. Nossa agenda lotou e a equipe parou de apagar incêndios."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600 text-sm">
+                    DR
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-sm">Dra. Renata M.</h4>
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mt-0.5">Gestora | Clínica OdontoVip</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Testimonial 2 - Indústria e Visão Computacional */}
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
+                <div className="flex text-amber-400 mb-4 gap-1">
+                  {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+                </div>
+                <p className="text-slate-700 italic text-sm leading-relaxed mb-6">
+                  "Na nossa linha de produção, um operador tinha que ficar verificando visualmente os parafusos de cada peça, o que gerava gargalos e falhas humanas por fadiga. A Omnium instalou um sistema de <strong>Visão Computacional que inspeciona as peças em milissegundos e reprova as defeituosas automaticamente.</strong> A velocidade e precisão da linha triplicaram."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500 text-sm">
+                    FS
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-sm">Fernando Silva</h4>
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mt-0.5">Diretor de Qualidade | MetalTech</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Testimonial 3 - Delivery Automatizado */}
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
+                <div className="flex text-amber-400 mb-4 gap-1">
+                  {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+                </div>
+                <p className="text-slate-700 italic text-sm leading-relaxed mb-6">
+                  "O caos do delivery acabou. A IA humanizada atende no WhatsApp, e quando o PIX cai, <strong>o pedido vai pra cozinha e a comanda imprime sozinha.</strong> Ao bater na botoeira, o cliente é avisado no whatsapp que o pedido saiu. Na entrega, o motoboy digita o código do cliente e o sistema faz o PIX da taxa de entrega pra ele na hora! Automação 100% de ponta a ponta. Show!!"
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center font-bold text-orange-600 text-sm">
+                    MC
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-sm">Marcos Costa</h4>
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mt-0.5">Proprietário | Burger Express</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm h-full bg-blue-400/10 blur-3xl rounded-full pointer-events-none"></div>
+          </motion.div>
+        </div>
       </section>
       <section id="services" className="py-24 px-4 sm:px-8 max-w-7xl mx-auto w-full space-y-16 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-r from-blue-100/50 to-cyan-100/50 blur-[100px] pointer-events-none rounded-full"></div>
@@ -311,7 +381,7 @@ ${formData.projectDescription}`;
                 onClick={() => selectService("ia-atendimento")}
                 className="text-xs font-bold text-slate-500 group-hover:text-blue-600 flex items-center gap-1 transition-colors"
               >
-                Solicitar projeto <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                Saber mais <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
           
@@ -334,7 +404,7 @@ ${formData.projectDescription}`;
                 onClick={() => selectService("rpa")}
                 className="text-xs font-bold text-slate-500 group-hover:text-indigo-600 flex items-center gap-1 transition-colors"
               >
-                Solicitar projeto <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                Saber mais <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
           
@@ -357,7 +427,7 @@ ${formData.projectDescription}`;
                 onClick={() => selectService("integracao")}
                 className="text-xs font-bold text-slate-500 group-hover:text-cyan-600 flex items-center gap-1 transition-colors"
               >
-                Solicitar projeto <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                Saber mais <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
           
@@ -380,7 +450,7 @@ ${formData.projectDescription}`;
                 onClick={() => selectService("iot")}
                 className="text-xs font-bold text-slate-500 group-hover:text-emerald-600 flex items-center gap-1 transition-colors"
               >
-                Solicitar projeto <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                Saber mais <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
           
@@ -403,7 +473,7 @@ ${formData.projectDescription}`;
                 onClick={() => selectService("visao")}
                 className="text-xs font-bold text-slate-500 group-hover:text-purple-600 flex items-center gap-1 transition-colors"
               >
-                Solicitar projeto <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                Saber mais <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
           
@@ -427,7 +497,7 @@ ${formData.projectDescription}`;
                 onClick={() => selectService("custom-systems")}
                 className="text-xs font-bold text-white flex items-center gap-1 hover:gap-2 transition-all"
               >
-                Solicitar projeto <ArrowRight className="w-3 h-3" />
+                Saber mais <ArrowRight className="w-3 h-3" />
               </button>
             </div>
           
@@ -436,7 +506,7 @@ ${formData.projectDescription}`;
         
 </motion.div>
       </section>
-{/* Process / How it Works Section */}
+      {/* Process / How it Works Section */}
       <section id="process" className="py-24 px-4 sm:px-8 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
@@ -584,7 +654,7 @@ ${formData.projectDescription}`;
                 onClick={() => setIsModalOpen(true)}
                 className="w-full sm:w-auto px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:-translate-y-0.5"
               >
-                Garantir esses Resultados
+                Garantir Resultados
               </button>
             </div>
 
@@ -931,7 +1001,7 @@ ${formData.projectDescription}`;
                     type="submit"
                     className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-widest rounded-xl transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:-translate-y-0.5 mt-2 flex items-center justify-center gap-2"
                   >
-                    Enviar Briefing <ArrowRight className="w-4 h-4" />
+                    Falar com Especialista <ArrowRight className="w-4 h-4" />
                   </button>
                 </form>
               )}
