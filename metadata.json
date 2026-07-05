@@ -1,0 +1,6 @@
+{
+  "name": "Omnium Solutions",
+  "description": "Omnium Solutions - Automação e Integração. Landing page institucional de soluções de automação industrial, residencial e IAs de atendimento humanizado.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
