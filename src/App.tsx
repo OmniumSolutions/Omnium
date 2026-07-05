@@ -77,8 +77,39 @@ export default function App() {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.projectDescription) return;
+    if (!formData.name || !formData.projectDescription) return;
     
+    // Para hospedagem estática (GitHub Pages), a melhor solução é enviar os dados 
+    // direto para o WhatsApp ou E-mail.
+    const serviceLabels: Record<string, string> = {
+      "ia-atendimento": "IA para Atendimento",
+      "automacao-rpa": "Automação Inteligente (RPA)",
+      "integracao": "Integração de Sistemas",
+      "hardware-iot": "Automação de Hardware & IoT",
+      "visao": "Visão Computacional",
+      "custom": "Sistemas Customizados"
+    };
+
+    const text = `Olá, vim pelo site e gostaria de falar sobre um projeto:
+    
+*Nome:* ${formData.name}
+*Empresa:* ${formData.company || 'Não informada'}
+*E-mail:* ${formData.email}
+*Telefone:* ${formData.phone || 'Não informado'}
+
+*Serviço de Interesse:* ${serviceLabels[formData.service] || formData.service}
+*Prioridade:* ${formData.priority}
+
+*Descrição do Projeto:*
+${formData.projectDescription}`;
+
+    const encodedText = encodeURIComponent(text);
+    // TODO: Insira o número do WhatsApp da empresa aqui (apenas números, com código do país 55)
+    const whatsappNumber = "5573981466703"; 
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+    window.open(whatsappUrl, '_blank');
+
     setFormSubmitted(true);
     setTimeout(() => {
       setFormSubmitted(false);
@@ -702,13 +733,7 @@ export default function App() {
           {/* Column 1: Brand */}
           <div className="flex flex-col items-center md:items-start gap-5">
             <Logo light className="py-1 opacity-80 hover:opacity-100 transition-opacity" />
-            <div className="flex flex-col items-center md:items-start gap-3 text-[10px] font-mono tracking-widest">
-              <span className="text-emerald-400 flex items-center gap-2 font-bold bg-emerald-500/10 px-3 py-1.5 rounded-lg border border-emerald-500/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                SISTEMAS OPERACIONAIS: ONLINE
-              </span>
-              <span className="text-slate-300">ATENDIMENTO REMOTO GLOBAL</span>
-            </div>
+
           </div>
 
           {/* Column 2: Contact Info */}
@@ -791,13 +816,13 @@ export default function App() {
                     <CheckCircle className="w-10 h-10 animate-bounce" />
                   </div>
                   <div className="space-y-2">
-                    <h4 className="text-xl font-bold text-slate-900">Briefing enviado com sucesso!</h4>
+                    <h4 className="text-xl font-bold text-slate-900">Redirecionando...</h4>
                     <p className="text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
-                      A Omnium Solutions recebeu as suas informações de projeto e analisará a viabilidade operacional nas próximas horas.
+                      Você está sendo redirecionado para o nosso WhatsApp para continuar o atendimento.
                     </p>
                   </div>
-                  <div className="text-[10px] text-blue-600 font-mono animate-pulse tracking-widest uppercase bg-blue-50 py-2 rounded-lg max-w-xs mx-auto">
-                    Enviando dados ao CRM integrado...
+                  <div className="text-[10px] text-emerald-600 font-mono animate-pulse tracking-widest uppercase bg-emerald-50 py-2 rounded-lg max-w-xs mx-auto">
+                    Abrindo WhatsApp...
                   </div>
                 
 </motion.div>
