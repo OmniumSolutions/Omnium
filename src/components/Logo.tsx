@@ -135,22 +135,22 @@ export default function Logo({ className = "", light = false }: LogoProps) {
   ];
 
   return (
-    <div className={`flex items-center gap-3.5 select-none ${className}`} id="omnium-brand-logo">
+    <div className={`flex items-center gap-4 select-none ${className}`} id="omnium-brand-logo">
       <img 
-        src="/logo.png" 
+        src={`${import.meta.env.BASE_URL}logo.png`}
         alt="Omnium Solutions" 
-        className="h-10 w-auto shrink-0 transition-transform duration-300 hover:scale-105" 
+        className="h-14 w-auto shrink-0 transition-transform duration-300 hover:scale-105" 
       />
       
       {/* Corporate Text Branding */}
       <div className="flex flex-col justify-center leading-none">
-        <span className={`text-[19px] font-black tracking-tight font-sans ${brandBlue} uppercase`}>
+        <span className={`text-[26px] font-black tracking-tight font-sans ${brandBlue} uppercase`}>
           OMNIUM
         </span>
-        <span className={`text-[9.5px] font-bold tracking-[0.27em] uppercase -mt-0.5 ${brandBlue}`}>
+        <span className={`text-[13px] font-bold tracking-[0.27em] uppercase -mt-1 ${brandBlue}`}>
           SOLUTIONS
         </span>
-        <span className={`text-[6.2px] font-semibold tracking-[0.16em] uppercase mt-0.5 ${sloganGray}`}>
+        <span className={`text-[8.5px] font-semibold tracking-[0.16em] uppercase mt-0.5 ${sloganGray}`}>
           AUTOMAÇÃO E INTEGRAÇÃO
         </span>
       </div>

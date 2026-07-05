@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { 
-  Terminal, ShieldCheck, Zap, Cpu, Settings, ArrowRight, CheckCircle, 
-  Layers, Users, Sparkles, MessageSquare, Database, Network, Eye, 
-  ExternalLink, Mail, Phone, Building, Briefcase, DollarSign, Clock, HelpCircle, AlertCircle
+  Terminal, ShieldCheck, Cpu, Settings, ArrowRight, CheckCircle, Layers, MessageSquare, Database, Network, Eye, ExternalLink, Mail, Phone, Building, Instagram, ChevronDown, ChevronUp, MessageCircle, Code, Search, PenTool, Rocket
 } from "lucide-react";
 import { motion } from "motion/react";
-import AIDemo from "./components/AIDemo";
 import Logo from "./components/Logo";
 
 const fadeIn = {
@@ -20,6 +17,29 @@ const staggerContainer = {
   whileInView: { opacity: 1 },
   viewport: { once: true, margin: "-50px" },
   transition: { staggerChildren: 0.15 }
+};
+
+
+const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="border-b border-slate-200 py-4">
+      <button 
+        onClick={() => setIsOpen(!isOpen)} 
+        className="flex w-full justify-between items-center text-left focus:outline-none group"
+      >
+        <span className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">{question}</span>
+        {isOpen ? <ChevronUp className="w-5 h-5 text-blue-600" /> : <ChevronDown className="w-5 h-5 text-slate-400 group-hover:text-blue-600 transition-colors" />}
+      </button>
+      <motion.div 
+        initial={false}
+        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+        className="overflow-hidden"
+      >
+        <p className="pt-4 text-sm text-slate-600 leading-relaxed">{answer}</p>
+      </motion.div>
+    </div>
+  );
 };
 
 export default function App() {
@@ -95,10 +115,7 @@ export default function App() {
           <a href="#about" className="hover:text-blue-600 transition-colors">Sobre</a>
           <a href="#services" className="hover:text-blue-600 transition-colors">Soluções</a>
           <a href="#roi-calculator" className="hover:text-blue-600 transition-colors">Calculadora ROI</a>
-          <a href="#ai-demo" className="text-blue-600 hover:text-blue-700 font-bold flex items-center gap-1.5 transition-colors">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping"></span>
-            Demo IA
-          </a>
+          
         </nav>
 
         <div className="flex items-center gap-4">
@@ -127,12 +144,12 @@ export default function App() {
         <motion.div animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }} className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-400/20 rounded-full blur-[100px] pointer-events-none"></motion.div>
         
         {/* Left Column: Headline and Positioning */}
-        <div className="lg:col-span-6 p-6 sm:p-12 lg:p-20 flex flex-col justify-center relative z-10">
+        <div className="lg:col-span-12 p-6 sm:p-12 lg:p-20 flex flex-col justify-center items-center text-center relative z-10">
           <motion.div 
             initial="initial"
             animate="whileInView"
             variants={staggerContainer}
-            className="space-y-8"
+            className="space-y-8 flex flex-col items-center max-w-3xl mx-auto"
           >
             <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-700 border border-blue-200/60 text-[10px] font-bold uppercase tracking-widest rounded-full shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
@@ -140,12 +157,12 @@ export default function App() {
             </motion.div>
             
             <motion.h1 variants={fadeIn} className="text-4xl sm:text-5xl lg:text-[4.5rem] font-display font-bold leading-[1.05] tracking-tight text-slate-900">
-              Escale seu Atendimento com <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">IA Humanizada.</span>
+              Pontes de alto desempenho entre o <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Físico e o Digital.</span>
             </motion.h1>
             
             <motion.p variants={fadeIn} className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-lg">
-              Reduza custos, automatize processos repetitivos e aumente suas vendas utilizando agentes de inteligência artificial multimodais que compreendem perfeitamente texto, áudio e imagem. Construímos arquiteturas blindadas contra falhas para a sua empresa.
+              Seja no chão de fábrica de uma metalúrgica, no sistema de segurança automotiva, na automação de processos administrativos na nuvem ou no atendimento de ponta via IA: nossas arquiteturas são desenhadas para durar.
             </motion.p>
 
             <motion.div variants={fadeIn} className="pt-4 flex flex-col sm:flex-row gap-4">
@@ -156,13 +173,7 @@ export default function App() {
                 Agendar Consultoria
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
-              <a 
-                href="#ai-demo" 
-                className="py-4 px-8 text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl text-center text-xs font-bold uppercase tracking-widest transition-all hover:shadow-sm hover:-translate-y-0.5 flex items-center justify-center gap-2"
-              >
-                <Sparkles className="w-4 h-4 text-blue-600" />
-                Testar Demo de IA
-              </a>
+              
             </motion.div>
 
             <motion.div variants={fadeIn} className="pt-10 flex items-center gap-6 text-xs font-semibold text-slate-500 uppercase tracking-widest">
@@ -176,36 +187,47 @@ export default function App() {
           </motion.div>
         </div>
 
-        {/* Right Column: AI Live Assistant Demo Container */}
-        <div id="ai-demo" className="lg:col-span-6 bg-slate-50/50 backdrop-blur-sm p-6 sm:p-12 lg:p-16 flex flex-col justify-center border-l border-slate-200 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-xl mx-auto w-full space-y-6"
-          >
-            <div className="flex items-center justify-between bg-white border border-slate-200 px-4 py-3 rounded-2xl shadow-sm">
-              <div>
-                <span className="text-blue-600 font-mono text-[9px] uppercase tracking-widest font-bold block">DEMONSTRAÇÃO ONLINE</span>
-                <h2 className="text-sm font-bold text-slate-900 tracking-tight flex items-center gap-2 mt-0.5">
-                  Live Preview: IA de Atendimento
-                </h2>
-              </div>
-              <span className="text-[10px] text-emerald-600 font-mono font-bold flex items-center gap-1.5 bg-emerald-50 px-2 py-1 rounded-lg border border-emerald-100">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                ONLINE
-              </span>
-            </div>
-            
-            <div className="shadow-2xl shadow-blue-900/5 rounded-2xl overflow-hidden ring-1 ring-slate-200">
-              <AIDemo />
-            </div>
-          </motion.div>
-        </div>
+        </section>
 
+{/* About Section / Technical Specs Matrix */}
+      <section id="about" className="py-24 px-4 sm:px-8 max-w-7xl mx-auto w-full flex flex-col items-center">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-12 max-w-4xl mx-auto text-center space-y-8"
+        >
+          <div className="space-y-4">
+            <span className="text-blue-600 font-mono text-[10px] font-bold uppercase tracking-[0.2em] block">SOBRE A OMNIUM SOLUTIONS</span>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900 leading-tight">
+              Engenharia de Software e Integração de Sistemas
+            </h2>
+          </div>
+          <div className="space-y-6 text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
+            <p className="font-medium text-slate-700 text-lg">
+              Nosso foco corporativo é projetar e construir arquiteturas de software altamente robustas e blindadas contra falhas operacionais.
+            </p>
+            <p>
+              Diferentes de consultorias puramente digitais, transitamos com extrema naturalidade pela física do chão de fábrica e da automação residencial. Entendemos protocolos industriais (Modbus, MQTT), painéis de CLP e conexões de sensores. Nossa missão é traduzir as necessidades físicas da sua operação em linhas de código eficientes e escaláveis na nuvem.
+            </p>
+          </div>
+
+          <div className="border border-slate-200 bg-white rounded-2xl p-6 flex items-center justify-between shadow-sm hover:shadow-md transition-shadow">
+            <div className="space-y-1">
+              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest block">CONTRATE COM SEGURANÇA</span>
+              <p className="text-sm font-bold text-slate-900">Garantia total de suporte técnico</p>
+            </div>
+            <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-6 h-6 text-emerald-600" />
+            </div>
+          </div>
+        </motion.div>
+
+        
+{/* Services Section / Solutions Grid */}
       </section>
-
-      {/* Services Section / Solutions Grid */}
       <section id="services" className="py-24 px-4 sm:px-8 max-w-7xl mx-auto w-full space-y-16 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[400px] bg-gradient-to-r from-blue-100/50 to-cyan-100/50 blur-[100px] pointer-events-none rounded-full"></div>
         
@@ -215,12 +237,12 @@ export default function App() {
           variants={fadeIn}
           className="text-center max-w-3xl mx-auto space-y-4 relative z-10"
         >
-          <span className="text-blue-600 font-mono text-[10px] font-bold uppercase tracking-[0.2em] block">NOSSAS SOLUÇÕES</span>
+          <span className="text-blue-600 font-mono text-[10px] font-bold uppercase tracking-[0.2em] block">ATENDIMENTO DE PONTA</span>
           <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900">
-            Pontes de alto desempenho entre o físico e o digital
+            Escale seu Atendimento com IA Humanizada
           </h2>
           <p className="text-slate-600 text-sm sm:text-base">
-            Seja no chão de fábrica de uma metalúrgica, no sistema de segurança automotiva, na automação de processos administrativos na nuvem ou no atendimento de ponta via IA: nossas arquiteturas são desenhadas para durar.
+            Reduza custos, automatize processos repetitivos e aumente suas vendas utilizando agentes de inteligência artificial multimodais que compreendem perfeitamente texto, áudio e imagem. Construímos arquiteturas blindadas contra falhas para a sua empresa.
           </p>
         </motion.div>
 
@@ -367,8 +389,40 @@ export default function App() {
 
         </motion.div>
       </section>
-
-      {/* Interactive Tool: Cost & Time Savings Calculator */}
+{/* Process / How it Works Section */}
+      <section id="process" className="py-24 px-4 sm:px-8 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <span className="text-blue-600 font-mono text-[10px] font-bold uppercase tracking-[0.2em] block">Como Trabalhamos</span>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900">
+              Do problema à solução em 4 passos
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+            <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-blue-100 via-blue-500 to-emerald-100 z-0"></div>
+            
+            {[
+              { step: "01", title: "Briefing", desc: "Mapeamos os gargalos e processos lentos da sua operação atual.", icon: <Search className="w-6 h-6"/> },
+              { step: "02", title: "Arquitetura", desc: "Desenhamos a solução sob medida, validando segurança e escala.", icon: <PenTool className="w-6 h-6"/> },
+              { step: "03", title: "Desenvolvimento", desc: "Criamos a automação ou IA com código robusto e limpo.", icon: <Code className="w-6 h-6"/> },
+              { step: "04", title: "Deploy & Setup", desc: "Implementamos no seu ambiente e treinamos sua equipe.", icon: <Rocket className="w-6 h-6"/> }
+            ].map((s, i) => (
+              <div key={i} className="relative z-10 flex flex-col items-center text-center space-y-4 group">
+                <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-blue-600 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                  {s.icon}
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono font-bold text-blue-500 mb-1 block">PASSO {s.step}</span>
+                  <h3 className="font-bold text-slate-900 text-lg">{s.title}</h3>
+                  <p className="text-xs text-slate-600 mt-2">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+{/* Interactive Tool: Cost & Time Savings Calculator */}
       <section id="roi-calculator" className="bg-slate-50 py-24 px-4 sm:px-8 border-t border-b border-slate-200 overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
@@ -491,49 +545,22 @@ export default function App() {
         </div>
       </section>
 
-      {/* About Section / Technical Specs Matrix */}
-      <section id="about" className="py-24 px-4 sm:px-8 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16">
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="lg:col-span-5 space-y-8"
-        >
-          <div className="space-y-4">
-            <span className="text-blue-600 font-mono text-[10px] font-bold uppercase tracking-[0.2em] block">SOBRE A OMNIUM SOLUTIONS</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900 leading-tight">
-              Engenharia de Software e Integração de Sistemas
+      {/* Tech Matrix Panel */}
+      <section id="tech-matrix" className="py-24 px-4 sm:px-8 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 space-y-4">
+            <span className="text-blue-600 font-mono text-[10px] font-bold uppercase tracking-[0.2em] block">Nossa Tecnologia</span>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900">
+              Stack de Alto Desempenho
             </h2>
           </div>
-          <div className="space-y-4 text-slate-600 text-sm leading-relaxed">
-            <p>
-              Nosso foco corporativo é projetar e construir arquiteturas de software altamente robustas e blindadas contra falhas operacionais.
-            </p>
-            <p>
-              Diferentes de consultorias puramente digitais, transitamos com extrema naturalidade pela física do chão de fábrica e da mecânica veicular. Entendemos protocolos industriais (Modbus, MQTT), painéis de CLP e conexões de sensores. Nossa missão é traduzir as necessidades físicas da sua operação em linhas de código eficientes e escaláveis na nuvem.
-            </p>
-          </div>
-
-          <div className="border border-slate-200 bg-white rounded-2xl p-6 flex items-center justify-between shadow-sm hover:shadow-md transition-shadow">
-            <div className="space-y-1">
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest block">CONTRATE COM SEGURANÇA</span>
-              <p className="text-sm font-bold text-slate-900">Garantia total de suporte técnico</p>
-            </div>
-            <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-6 h-6 text-emerald-600" />
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Tech Matrix Panel */}
+{/* Tech Matrix Panel */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-7 bg-white border border-slate-200 shadow-xl shadow-slate-200/50 rounded-[2rem] p-8 sm:p-12 flex flex-col justify-between space-y-10"
+          className="bg-white  p-8 sm:p-12 flex flex-col justify-between space-y-10"
         >
           <div className="flex justify-between items-end border-b border-slate-100 pb-6">
             <div>
@@ -558,7 +585,7 @@ export default function App() {
                 <Database className="w-4 h-4 text-blue-500 opacity-50 group-hover:opacity-100 transition-opacity" />
                 <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest font-mono">Banco de Dados</p>
               </div>
-              <p className="text-slate-900 font-bold text-sm">SQL Server, PostgreSQL, Redis</p>
+              <p className="text-slate-900 font-bold text-sm">SQL PostgreSQL, Redis</p>
               <p className="text-xs text-slate-500 leading-relaxed">Modelagem blindada, índices otimizados e consultas de baixa latência.</p>
             </div>
 
@@ -598,30 +625,113 @@ export default function App() {
             </a>
           </div>
         </motion.div>
+        </div>
 
       </section>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 px-4 sm:px-8 py-12 mt-auto border-t border-slate-800 text-[11px] font-mono tracking-widest flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex flex-col items-center md:items-start gap-5">
-          <Logo light className="py-1 opacity-80 hover:opacity-100 transition-opacity" />
-          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-[10px]">
-            <span className="text-emerald-400 flex items-center gap-2 font-bold bg-emerald-500/10 px-3 py-1.5 rounded-lg border border-emerald-500/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              SISTEMAS OPERACIONAIS: ONLINE
-            </span>
-            <span className="hidden sm:inline text-slate-700">|</span>
-            <span className="text-slate-300">ATENDIMENTO REMOTO GLOBAL</span>
+{/* FAQ Section */}
+      <section className="py-24 px-4 sm:px-8 bg-white border-t border-slate-200">
+        <div className="max-w-3xl mx-auto space-y-12">
+          <div className="text-center space-y-4">
+            <span className="text-blue-600 font-mono text-[10px] font-bold uppercase tracking-[0.2em] block">Dúvidas Frequentes</span>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-slate-900">
+              Perguntas Frequentes
+            </h2>
+          </div>
+          
+          <div className="space-y-2">
+            <FAQItem 
+              question="O código-fonte da solução é meu?" 
+              answer="Sim. Diferente das plataformas SaaS tradicionais que te prendem a mensalidades vitalícias por usuário, nós desenvolvemos a arquitetura e transferimos 100% da propriedade intelectual para sua empresa." 
+            />
+            <FAQItem 
+              question="Quanto tempo leva para implementar um agente de IA?" 
+              answer="Projetos simples de IA para WhatsApp podem ser lançados em 2 a 3 semanas. Ecossistemas complexos com visão computacional e RPA podem levar de 2 a 4 meses, dependendo das integrações." 
+            />
+            <FAQItem 
+              question="E se a tecnologia ficar desatualizada?" 
+              answer="Utilizamos stacks modernos (React, Node, Python) e arquiteturas escaláveis. Além disso, oferecemos pacotes de manutenção para garantir que os modelos de IA e as integrações (APIs) continuem funcionando com as versões mais recentes." 
+            />
+            <FAQItem 
+              question="Vocês oferecem suporte para GitHub Pages e ambientes sem servidor?" 
+              answer="Sim! Adaptamos a entrega para sua infraestrutura. Se você precisa de aplicações puramente client-side, configuramos tudo via APIs serverless, Cloud Functions ou provedores de Backend as a Service." 
+            />
           </div>
         </div>
-        
-        <div className="text-center md:text-right uppercase space-y-2">
-          <p className="text-slate-300 font-bold">© {new Date().getFullYear()} Omnium Solutions — Todos os direitos reservados</p>
-          <p className="text-[9px] text-slate-500 font-sans tracking-normal font-medium max-w-sm ml-auto">
-            Landing Page desenvolvida de acordo com especificações técnicas. IA humanizada multimodal ativa e pronta.
-          </p>
+      </section>
+
+
+
+      
+      
+
+      
+
+      
+
+      
+
+      
+      
+
+
+      
+
+      {/* Footer */}
+      <footer className="bg-slate-900 text-slate-400 px-4 sm:px-8 py-16 mt-auto border-t border-slate-800">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+          
+          {/* Column 1: Brand */}
+          <div className="flex flex-col items-center md:items-start gap-5">
+            <Logo light className="py-1 opacity-80 hover:opacity-100 transition-opacity" />
+            <div className="flex flex-col items-center md:items-start gap-3 text-[10px] font-mono tracking-widest">
+              <span className="text-emerald-400 flex items-center gap-2 font-bold bg-emerald-500/10 px-3 py-1.5 rounded-lg border border-emerald-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                SISTEMAS OPERACIONAIS: ONLINE
+              </span>
+              <span className="text-slate-300">ATENDIMENTO REMOTO GLOBAL</span>
+            </div>
+          </div>
+
+          {/* Column 2: Contact Info */}
+          <div className="flex flex-col items-center md:items-start gap-4 text-sm font-sans">
+            <h4 className="text-white text-xs font-bold uppercase tracking-widest font-mono mb-2">Fale Conosco</h4>
+            <a href="mailto:solutionsomnium@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
+              <Mail className="w-4 h-4 text-blue-400" />
+              solutionsomnium@gmail.com
+            </a>
+            <a href="https://instagram.com/solutionsomnium" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
+              <Instagram className="w-4 h-4 text-pink-400" />
+              @solutionsomnium
+            </a>
+            <a href="https://wa.me/5573981466703" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
+              <Phone className="w-4 h-4 text-emerald-400" />
+              WhatsApp: (73) 98146-6703
+            </a>
+          </div>
+          
+          {/* Column 3: Copyright */}
+          <div className="text-center md:text-right uppercase space-y-2 font-mono tracking-widest">
+            <p className="text-slate-300 font-bold text-[11px]">© {new Date().getFullYear()} Omnium Solutions — Todos os direitos reservados</p>
+            <p className="text-[9px] text-slate-500 font-sans tracking-normal font-medium max-w-sm ml-auto">
+              Desenvolvemos arquiteturas robustas de automação e integração que impulsionam o seu negócio.
+            </p>
+          </div>
         </div>
       </footer>
+
+      
+      {/* Floating WhatsApp Button */}
+      <a 
+        href="https://wa.me/5573981466703?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20as%20solu%C3%A7%C3%B5es%20de%20automa%C3%A7%C3%A3o." 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-40 bg-emerald-500 text-white p-4 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:bg-emerald-600 hover:scale-110 hover:shadow-[0_8px_30px_rgba(16,185,129,0.3)] transition-all duration-300 flex items-center justify-center group"
+      >
+        <MessageCircle className="w-7 h-7" />
+        <span className="absolute right-full mr-4 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+          Falar no WhatsApp
+        </span>
+      </a>
 
       {/* Modal / Dialog for quote request */}
       {isModalOpen && (
