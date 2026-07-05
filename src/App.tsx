@@ -37,7 +37,8 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
         className="overflow-hidden"
       >
         <p className="pt-4 text-sm text-slate-600 leading-relaxed">{answer}</p>
-      </motion.div>
+      
+</motion.div>
     </div>
   );
 };
@@ -140,8 +141,10 @@ export default function App() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50/50 grid grid-cols-1 lg:grid-cols-12 overflow-hidden border-b border-slate-200 relative min-h-[calc(100vh-80px)]">
         {/* Glow Effects */}
-        <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-400/20 rounded-full blur-[120px] pointer-events-none"></motion.div>
-        <motion.div animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }} className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-400/20 rounded-full blur-[100px] pointer-events-none"></motion.div>
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-400/20 rounded-full blur-[120px] pointer-events-none">
+</div>
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-400/20 rounded-full blur-[100px] pointer-events-none">
+</div>
         
         {/* Left Column: Headline and Positioning */}
         <div className="lg:col-span-12 p-6 sm:p-12 lg:p-20 flex flex-col justify-center items-center text-center relative z-10">
@@ -154,7 +157,8 @@ export default function App() {
             <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-700 border border-blue-200/60 text-[10px] font-bold uppercase tracking-widest rounded-full shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
               Automação e Integração de Elite
-            </motion.div>
+            
+</motion.div>
             
             <motion.h1 variants={fadeIn} className="text-4xl sm:text-5xl lg:text-[4.5rem] font-display font-bold leading-[1.05] tracking-tight text-slate-900">
               Pontes de alto desempenho entre o <br/>
@@ -162,7 +166,7 @@ export default function App() {
             </motion.h1>
             
             <motion.p variants={fadeIn} className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-lg">
-              Seja no chão de fábrica ou no delivery, na automação de processos industriais ou administrativos, na nuvem ou no atendimento de ponta via IA: nossas arquiteturas são desenhadas para durar.
+              Seja no chão de fábrica de uma metalúrgica, na automação de processos administrativos na nuvem ou no atendimento de ponta via IA: nossas arquiteturas são desenhadas para durar.
             </motion.p>
 
             <motion.div variants={fadeIn} className="pt-4 flex flex-col sm:flex-row gap-4">
@@ -174,7 +178,8 @@ export default function App() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
               
-            </motion.div>
+            
+</motion.div>
 
             <motion.div variants={fadeIn} className="pt-10 flex items-center gap-6 text-xs font-semibold text-slate-500 uppercase tracking-widest">
                <div className="flex items-center gap-2">
@@ -183,8 +188,10 @@ export default function App() {
                <div className="flex items-center gap-2">
                  <CheckCircle className="w-4 h-4 text-emerald-500" /> Código 100% Seu
                </div>
-            </motion.div>
-          </motion.div>
+            
+</motion.div>
+          
+</motion.div>
         </div>
 
         </section>
@@ -223,7 +230,8 @@ export default function App() {
               <ShieldCheck className="w-6 h-6 text-emerald-600" />
             </div>
           </div>
-        </motion.div>
+        
+</motion.div>
 
         
 {/* Services Section / Solutions Grid */}
@@ -244,7 +252,8 @@ export default function App() {
           <p className="text-slate-600 text-sm sm:text-base">
             Reduza custos, automatize processos repetitivos e aumente suas vendas utilizando agentes de inteligência artificial multimodais que compreendem perfeitamente texto, áudio e imagem. Construímos arquiteturas blindadas contra falhas para a sua empresa.
           </p>
-        </motion.div>
+        
+</motion.div>
 
         {/* Services Bento Grid */}
         <motion.div 
@@ -274,7 +283,8 @@ export default function App() {
                 Solicitar projeto <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
-          </motion.div>
+          
+</motion.div>
 
           {/* Card 2: Automação Inteligente (RPA & Scripts) */}
           <motion.div variants={fadeIn} className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-900/5 transition-all group duration-300 hover:-translate-y-1">
@@ -296,7 +306,8 @@ export default function App() {
                 Solicitar projeto <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
-          </motion.div>
+          
+</motion.div>
 
           {/* Card 3: Integração de Sistemas */}
           <motion.div variants={fadeIn} className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-cyan-200 hover:shadow-xl hover:shadow-cyan-900/5 transition-all group duration-300 hover:-translate-y-1">
@@ -318,7 +329,8 @@ export default function App() {
                 Solicitar projeto <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
-          </motion.div>
+          
+</motion.div>
 
           {/* Card 4: Automação Industrial, Automotiva & Residencial */}
           <motion.div variants={fadeIn} className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-900/5 transition-all group duration-300 hover:-translate-y-1">
@@ -340,7 +352,8 @@ export default function App() {
                 Solicitar projeto <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
-          </motion.div>
+          
+</motion.div>
 
           {/* Card 5: Visão Computacional */}
           <motion.div variants={fadeIn} className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-purple-200 hover:shadow-xl hover:shadow-purple-900/5 transition-all group duration-300 hover:-translate-y-1">
@@ -362,7 +375,8 @@ export default function App() {
                 Solicitar projeto <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
-          </motion.div>
+          
+</motion.div>
 
           {/* Card 6: Sistemas Customizados */}
           <motion.div variants={fadeIn} className="bg-blue-600 border border-blue-500 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-900/20 transition-all group relative overflow-hidden duration-300 hover:-translate-y-1">
@@ -385,9 +399,11 @@ export default function App() {
                 Solicitar projeto <ArrowRight className="w-3 h-3" />
               </button>
             </div>
-          </motion.div>
+          
+</motion.div>
 
-        </motion.div>
+        
+</motion.div>
       </section>
 {/* Process / How it Works Section */}
       <section id="process" className="py-24 px-4 sm:px-8 bg-slate-50 border-t border-slate-200">
@@ -452,7 +468,8 @@ export default function App() {
                 Nossas automações não param de rodar na primeira mudança de layout de uma página web ou instabilidade de rede. Integramos rotinas robustas de log, e-mail de aviso em tempo real e re-tentativa transparente.
               </p>
             </div>
-          </motion.div>
+          
+</motion.div>
 
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
@@ -540,7 +557,8 @@ export default function App() {
               </button>
             </div>
 
-          </motion.div>
+          
+</motion.div>
 
         </div>
       </section>
@@ -624,7 +642,8 @@ export default function App() {
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
-        </motion.div>
+        
+</motion.div>
         </div>
 
       </section>
@@ -780,7 +799,8 @@ export default function App() {
                   <div className="text-[10px] text-blue-600 font-mono animate-pulse tracking-widest uppercase bg-blue-50 py-2 rounded-lg max-w-xs mx-auto">
                     Enviando dados ao CRM integrado...
                   </div>
-                </motion.div>
+                
+</motion.div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-5">
                   
@@ -892,7 +912,8 @@ export default function App() {
               )}
             </div>
 
-          </motion.div>
+          
+</motion.div>
         </div>
       )}
 
