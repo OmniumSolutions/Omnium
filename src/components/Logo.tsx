@@ -14,7 +14,7 @@ export default function Logo({ className = "", light = false }: LogoProps) {
       <img 
         src={`${import.meta.env.BASE_URL}logo.png?v=11`}
         alt="Omnium Solutions" 
-        className={`h-24 sm:h-28 w-auto shrink-0 ${light ? "brightness-0 invert opacity-90" : ""} transition-transform duration-300 hover:scale-105`}
+        className={`h-22 sm:h-26 w-auto shrink-0 ${light ? "brightness-0 invert opacity-90" : ""} transition-transform duration-300 hover:scale-105`}
       />
       
       {/* Corporate Text Branding */}
