@@ -187,7 +187,7 @@ ${formData.projectDescription}`;
             </motion.h1>
             
             <motion.p variants={fadeIn} className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
-              Seja no chão de fábrica de uma metalúrgica, na automação de processos administrativos na nuvem ou no atendimento de ponta via IA: nossas arquiteturas são desenhadas para durar.
+              Seja no delivery, no chão de fábrica, na automação de processos industriais, na nuvem ou no atendimento de ponta via IA: Nossas arquiteturas são desenhadas para durar.
             </motion.p>
 
             <motion.div variants={fadeIn} className="pt-4 flex flex-col sm:flex-row gap-4">
