@@ -438,9 +438,20 @@ ${formData.projectDescription}`;
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="space-y-6 relative z-10 max-h-[600px] overflow-y-auto pr-4" style={{ scrollbarWidth: 'thin' }}>
+            <div className="relative z-10 w-full -mx-4 sm:-mx-8">
+              <style>{`
+                .hide-scrollbar::-webkit-scrollbar { display: none; }
+              `}</style>
+              <div 
+                className="flex overflow-x-auto gap-6 pb-8 pt-4 px-6 sm:px-12 snap-x snap-mandatory items-start hide-scrollbar" 
+                style={{ 
+                  scrollbarWidth: 'none', 
+                  maskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)'
+                }}
+              >
               {/* Testimonial 1 - Clínica Odontológica */}
-              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50 shrink-0 w-[320px] sm:w-[400px] snap-center flex flex-col justify-between">
                 <div className="flex text-amber-400 mb-4 gap-1">
                   {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
                 </div>
@@ -459,7 +470,7 @@ ${formData.projectDescription}`;
               </div>
 
               {/* Testimonial 2 - Indústria e Visão Computacional */}
-              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50 shrink-0 w-[320px] sm:w-[400px] snap-center flex flex-col justify-between">
                 <div className="flex text-amber-400 mb-4 gap-1">
                   {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
                 </div>
@@ -478,7 +489,7 @@ ${formData.projectDescription}`;
               </div>
 
               {/* Testimonial 3 - Delivery Automatizado */}
-              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50">
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl shadow-slate-200/50 shrink-0 w-[320px] sm:w-[400px] snap-center flex flex-col justify-between">
                 <div className="flex text-amber-400 mb-4 gap-1">
                   {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
                 </div>
@@ -494,6 +505,7 @@ ${formData.projectDescription}`;
                     <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mt-0.5">Proprietário | Burger Express</p>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm h-full bg-blue-400/10 blur-3xl rounded-full pointer-events-none"></div>
